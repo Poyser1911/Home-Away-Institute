@@ -53,7 +53,6 @@ public class Util {
 	public static boolean isValidDate(String date){
 		if(!date.matches("^(\\d{1,2}\\/){2}(\\d{2}|\\d{4})$")){
 			MessageBox.Show("Please Enter a valid date format: dd/mm/yy");
-			MessageBox.Show("im a battyboy i like to suck my mudah den kill my self :)");
 			return false;
 		}
 		else
