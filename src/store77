@@ -1,0 +1,43 @@
+{
+    "Staffs": [],
+    "Students": [{
+        "contactNumber": "234545654",
+        "address": "44 Ope Street",
+        "enrollmentStatus": 0,
+        "programCode": "NET1",
+        "dateEnrolled": "11/11/23",
+        "courseCodes": ["321", "123"],
+        "id": "2016-NET1-0",
+        "password": "b98d463190b1f2e3b447d2f4a68bee1ab29d6316",
+        "name": "Jen Baker"
+    }],
+    "Programmes": [{
+        "maxCources": 4,
+        "name": "SCIT",
+        "Code": "NET1",
+        "Accreditation": "4",
+        "Award": "3",
+        "courseCodes": []
+    }, {
+        "maxCources": 4,
+        "name": "Mechanics",
+        "Code": "SB1",
+        "Accreditation": "4",
+        "Award": "4",
+        "courseCodes": []
+    }],
+    "costPerCredit": 8300.9,
+    "Courses": [{
+        "Credits": 4,
+        "description": "Good Luck",
+        "name": "Networks1",
+        "PreRequisite": "321",
+        "Code": "123"
+    }, {
+        "Credits": 4,
+        "description": "Good Luck2",
+        "name": "Networks2",
+        "PreRequisite": "123",
+        "Code": "321"
+    }]
+}
