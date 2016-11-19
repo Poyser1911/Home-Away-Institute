@@ -1,5 +1,4 @@
 package Entities;
-import domain.User;
 import domain.Util;
 
 public class Staff extends User {

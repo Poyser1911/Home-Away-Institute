@@ -2,17 +2,13 @@ package presentation;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
 import Entities.Course;
@@ -97,7 +93,7 @@ public class EditCourseWindow {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				List<Course> cources = sm.getStore().Courses;
+				List<Course> cources = sm.getStore().getCourses();
 
 				c.setCode(codebox.getText());
 				c.setName(namebox.getText());
@@ -106,8 +102,7 @@ public class EditCourseWindow {
 				c.setPreRequisite(prereqbox.getText());
 				for (int i = 0; i < cources.size(); i++)
 					if (cources.get(i).getCode().equals(c.getCode())){
-						sm.getStore().Courses.set(i, c);
-						Course cc = sm.getStore().Courses.get(i);
+						cources.set(i, c);
 					}
 				sm.SaveChanges();
 				frame.dispose();

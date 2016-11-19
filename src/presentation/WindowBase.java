@@ -1,4 +1,4 @@
-package domain;
+package presentation;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -16,10 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
-import presentation.MainWindow;
-import presentation.MessageBox;
-
+//KYS
 public class WindowBase {
 		
 	protected JFrame frame = new JFrame();
@@ -28,6 +25,7 @@ public class WindowBase {
 	private JLabel close;
 	private JLabel minimize;
 	protected JButton btnLogout;
+	private Color borderColor = Color.decode("#003049");
 	
 	public WindowBase(){
 		frame.getContentPane().setFont(new Font("Dialog", Font.PLAIN, 15));
@@ -73,25 +71,25 @@ public class WindowBase {
 		
 		JLabel border_bottom = new JLabel();
 		border_bottom.setOpaque(true);
-		border_bottom.setBackground(new Color(59, 89, 182));
+		border_bottom.setBackground(borderColor);
 		border_bottom.setBounds(0, 511, 696, 17);
 		frame.getContentPane().add(border_bottom);
 		
 		JLabel border_left = new JLabel();
 		border_left.setOpaque(true);
-		border_left.setBackground(new Color(59, 89, 182));
+		border_left.setBackground(borderColor);
 		border_left.setBounds(0, 35, 13, 482);
 		frame.getContentPane().add(border_left);
 		
 		JLabel border_right = new JLabel();
 		border_right.setOpaque(true);
-		border_right.setBackground(new Color(59, 89, 182));
+		border_right.setBackground(borderColor);
 		border_right.setBounds(683, 35, 14, 482);
 		frame.getContentPane().add(border_right);
 		
 		JLabel border_top = new JLabel();
 		border_top.setOpaque(true);
-		border_top.setBackground(new Color(59, 89, 182));
+		border_top.setBackground(borderColor);
 		border_top.setBounds(0, 0, 696, 37);
 		frame.getContentPane().add(border_top);
 		

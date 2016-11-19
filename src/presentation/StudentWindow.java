@@ -17,7 +17,6 @@ import Entities.Course;
 import Entities.Programme;
 import Entities.Student;
 import domain.SaveFileManager;
-import domain.WindowBase;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -25,6 +24,7 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.TextArea;
 
 
 public class StudentWindow extends WindowBase{
@@ -41,6 +41,7 @@ public class StudentWindow extends WindowBase{
 	private SaveFileManager sm;
 	private Student student;
 	private Programme programme;
+	private JTable progresstable;
 
 	public static void main(String studentId) {
 		EventQueue.invokeLater(new Runnable() {
@@ -173,11 +174,18 @@ public class StudentWindow extends WindowBase{
 		
 		coursetable = new JTable();
 		scrollPane.setViewportView(coursetable);
-		coursetable.setModel(sm.getStore().buildStudentCoursesTable(student));
 		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Progress Report", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 670, 375);
+		panel_1.add(scrollPane_1);
+		
+		progresstable = new JTable();
+		scrollPane_1.setViewportView(progresstable);
 		coursetable.addMouseListener(removeCourseClicked());
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Progess Report", null, tabbedPane_1, null);
 		
 		refreshStats();
 	}
@@ -186,21 +194,19 @@ public class StudentWindow extends WindowBase{
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(student.getEnrollmentStatus() == 0){
-					btnEnroll.setText("Unroll");
-					btnEnroll.setBackground(Color.green);
+					btnEnroll.setText("Enrolled");
+					btnEnroll.setBackground(Color.decode("#E8E9EB"));
 					student.setEnrollmentStatus(1);
+					student.setEnrolledCourseCodes(student.getCourseCodes());
+					btnEnroll.setEnabled(false);
 				}
-				else{
-					btnEnroll.setText("Enroll");
-					btnEnroll.setBackground(new Color(59, 89, 182));
-					student.setEnrollmentStatus(0);
-				}
-				List<Student> students = sm.getStore().Students;
+				List<Student> students = sm.getStore().getStudents();
 				for (int i = 0; i < students.size(); i++)
 					if (students.get(i).getId().equals(student.getId()))
-						sm.getStore().Students.set(i, student);
+						students.set(i, student);
 				
 				sm.SaveChanges();
+				progresstable.setModel(sm.getStore().buildStudentCoursesTable(student,true));
 			}
 		};
 	}
@@ -211,12 +217,12 @@ public class StudentWindow extends WindowBase{
 				if (evt.getClickCount() == 2) {
 					if (courselist.getSelectedIndex() < 0)
 						return;
-					List<Student> students = sm.getStore().Students;
+					List<Student> students = sm.getStore().getStudents();
 					Course c = sm.getStore().getCourseByName(String.valueOf(courselist.getSelectedValue()));
 					student.addCourseCode(c.getCode());
 					for (int i = 0; i < students.size(); i++)
 						if (students.get(i).getId().equals(student.getId())){
-							sm.getStore().Students.set(i, student);
+							students.set(i, student);
 						}
 					sm.SaveChanges();
 					refreshStats();
@@ -234,10 +240,10 @@ public class StudentWindow extends WindowBase{
 					String courseCode = coursetable.getValueAt(coursetable.getSelectedRow(), 0).toString();
 					
 					student.removeCourseCode(courseCode);
-					List<Student> students = sm.getStore().Students;
+					List<Student> students = sm.getStore().getStudents();
 					for (int i = 0; i < students.size(); i++)
 						if (students.get(i).getId().equals(student.getId())){
-							sm.getStore().Students.set(i, student);
+							students.set(i, student);
 						}
 					sm.SaveChanges();
 					refreshStats();
@@ -249,7 +255,8 @@ public class StudentWindow extends WindowBase{
 	private void refreshStats(){
 		Map<String,String> stats = sm.getStore().getStudentFeeStats(student);
 		courselist.setModel(sm.getStore().getUnaddedCoursesForStudent(student));
-		coursetable.setModel(sm.getStore().buildStudentCoursesTable(student));
+		coursetable.setModel(sm.getStore().buildStudentCoursesTable(student,false));
+		progresstable.setModel(sm.getStore().buildStudentCoursesTable(student,true));
 		lblTotalCredits.setText("Total Credits: "+stats.get("totalcredits"));
 		lblTotalCost.setText("Total Cost: $"+stats.get("totalcost"));
 		lblNoOfCourses.setText("No. of Courses: "+student.getCourseCodes().size());
@@ -262,9 +269,10 @@ public class StudentWindow extends WindowBase{
 			btnEnroll.setBackground(new Color(59, 89, 182));
 		}
 		else{
-			btnEnroll.setText("Unroll");
-			btnEnroll.setBackground(Color.green);
+			btnEnroll.setText("Enrolled");
+			btnEnroll.setBackground(Color.decode("#E8E9EB"));
+			student.setEnrollmentStatus(1);
+			btnEnroll.setEnabled(false);
 		}
 	}
-	
 }

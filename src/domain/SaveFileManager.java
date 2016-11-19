@@ -101,20 +101,20 @@ public class SaveFileManager {
 	}
 	public void addStaff(Staff staff){
 		
-		store.Staffs.add(staff);
+		store.getStaffs().add(staff);
 		SaveChanges();
 		
 	}
 	public void addStudent(Student student){
 		
-		store.Students.add(student);
+		store.getStudents().add(student);
 		SaveChanges();
 		
 	}
 
 	public void addProgramme(Programme programme){
 		
-		store.Programmes.add(programme);
+		store.getProgrammes().add(programme);
 		SaveChanges();
 		
 	}

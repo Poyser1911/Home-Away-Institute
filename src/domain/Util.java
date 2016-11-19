@@ -61,7 +61,7 @@ public class Util {
 	
 	public static boolean isValidContact(String contact){
 		if(!contact.matches("^(\\d{3,4}|\\d\\-\\d{3}|)\\-?\\d{3}\\-?\\d{4}$")){
-			MessageBox.Show("Please Enter a valid date format: dd/mm/yy");
+			MessageBox.Show("Please Enter a valid telephone/cell number format: 1876-123-4567 / 123-4567 / 1234567 / 8761234567");
 			return false;
 		}
 		else

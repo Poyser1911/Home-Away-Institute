@@ -1,4 +1,4 @@
-package domain;
+package Entities;
 
 public abstract class User {
 	

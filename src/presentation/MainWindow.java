@@ -3,7 +3,6 @@ package presentation;
 import java.awt.EventQueue;
 import domain.SaveFileManager;
 import domain.Util;
-import domain.WindowBase;
 import domain.Util.UserType;
 
 import javax.swing.JTextField;

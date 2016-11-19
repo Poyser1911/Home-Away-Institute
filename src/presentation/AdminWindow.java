@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import Entities.Staff;
 import domain.SaveFileManager;
 import domain.Util;
-import domain.WindowBase;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;

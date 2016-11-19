@@ -19,12 +19,44 @@ import domain.Util.UserType;
 public class Store {
 
 	private static int nextprogramme = 0;
-	public List<Staff> Staffs = new ArrayList<Staff>();
-	public List<Student> Students = new ArrayList<Student>();
-	public List<Programme> Programmes = new ArrayList<Programme>();
+	private List<Staff> Staffs = new ArrayList<Staff>();
+	private List<Student> Students = new ArrayList<Student>();
+	private List<Programme> Programmes = new ArrayList<Programme>();
 	private double costPerCredit = 8300.90;
-	public List<Course> Courses = new ArrayList<Course>();
+	private List<Course> Courses = new ArrayList<Course>();
 
+
+	public List<Staff> getStaffs() {
+		return Staffs;
+	}
+
+	public void setStaffs(List<Staff> staffs) {
+		Staffs = staffs;
+	}
+
+	public List<Student> getStudents() {
+		return Students;
+	}
+
+	public void setStudents(List<Student> students) {
+		Students = students;
+	}
+
+	public List<Programme> getProgrammes() {
+		return Programmes;
+	}
+
+	public void setProgrammes(List<Programme> programmes) {
+		Programmes = programmes;
+	}
+
+	public List<Course> getCourses() {
+		return Courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		Courses = courses;
+	}
 
 	public double getCostPerCredit() {
 		return costPerCredit;
@@ -191,14 +223,20 @@ public class Store {
 		};
 	}
 
-	public DefaultTableModel buildStudentCoursesTable(Student s) {
+	public DefaultTableModel buildStudentCoursesTable(Student s,boolean isEnrolledCources) {
 		String[] columns = new String[] { "Code", "Name", "PreRequisite", "Credits", "Description","Cost","C.Cost" };
 		int found = 0;
+		List<String> courseCodes = new ArrayList<String>();
+		if(!isEnrolledCources)
+			courseCodes = s.getCourseCodes();
+		else
+			courseCodes = s.getEnrolledCourseCodes();
+		
 		int rowsNum = s.getCourseCodes().size();
 		Object[][] rows = new Object[rowsNum][columns.length];
 		double cc = 0.0;
 		for (int i = 0; i < Courses.size(); i++) {
-			if (s.getCourseCodes().contains(Courses.get(i).getCode())){
+			if (courseCodes.contains(Courses.get(i).getCode())){
 			for (int j = 0; j < columns.length; j++)
 					switch (j) {
 					case 0:

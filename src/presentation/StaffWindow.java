@@ -18,7 +18,6 @@ import Entities.Programme;
 import Entities.Student;
 import domain.SaveFileManager;
 import domain.Util;
-import domain.WindowBase;
 
 import java.awt.GridLayout;
 import javax.swing.JTextField;
@@ -397,10 +396,6 @@ public class StaffWindow extends WindowBase {
             		return;
             	}
 
-            	if(!Util.isValid(programcodebox.getSelectedItem().toString(),"Please Enter a valid Program Code.")){
-            		programcodebox.grabFocus();
-					return;
-				}
             	
             	if(!Util.isValidDate(datebox.getText())){
 					datebox.grabFocus();
@@ -414,6 +409,8 @@ public class StaffWindow extends WindowBase {
                 sm.Load();
                 generateID();
                 studentlisttable.setModel(sm.getStore().buildStudentTable());
+                
+                MessageBox.Show("New Student ~"+namebox.getText()+" Added Sucessfully");
             }
         };
     }
@@ -472,7 +469,10 @@ public class StaffWindow extends WindowBase {
     private void addCourseToProgramme(){
     	Programme p = sm.getStore().getProgrammeByName(program_name.getText());
     	Course c =  sm.getStore().getCourseByName(String.valueOf(addcourselist.getSelectedValue()));
-    	
+    	if(p.getCourseCodes().size() >= p.getMaxCources()){
+    		MessageBox.Error("Program Full\nMaximum Cources ("+p.getMaxCources()+") already added");
+    		return;
+    	}
     	p.addCourse(c.getCode());
     	
             sm.SaveChanges();
@@ -501,7 +501,7 @@ public class StaffWindow extends WindowBase {
     
     private DefaultComboBoxModel<String> getProgramCodes(){
     	DefaultComboBoxModel<String> result = new DefaultComboBoxModel<String>();
-    	List<Programme> programmes = sm.getStore().Programmes;
+    	List<Programme> programmes = sm.getStore().getProgrammes();
     	for(Programme p : programmes)
     	result.addElement(p.getName()+"("+p.getCode()+")");
     	
@@ -554,7 +554,7 @@ public class StaffWindow extends WindowBase {
                     	
                     addCourseToProgramme();
                 }
-            }
+          }
         };
     }
     

@@ -1,5 +1,4 @@
 package Entities;
-import domain.User;
 import domain.Util;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,16 @@ public class Student extends User{
     private String dateEnrolled;
     
     private List<String> courseCodes = new ArrayList<String>();
+    
+    private List<String> enrolledCourseCodes = new ArrayList<String>();
 
-    public String getPassword() {
+    public List<String> getEnrolledCourseCodes() {
+		return enrolledCourseCodes;
+	}
+	public void setEnrolledCourseCodes(List<String> enrolledCourseCodes) {
+		this.enrolledCourseCodes = enrolledCourseCodes;
+	}
+	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
