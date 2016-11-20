@@ -12,11 +12,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-//KYS
+
 public class WindowBase {
 		
 	protected JFrame frame = new JFrame();
@@ -24,8 +23,8 @@ public class WindowBase {
 	private JLabel headerlabel;
 	private JLabel close;
 	private JLabel minimize;
-	protected JButton btnLogout;
-	private Color borderColor = Color.decode("#003049");
+	protected Button btnLogout;
+	protected Color borderColor = Color.decode("#2AB7CA");
 	
 	public WindowBase(){
 		frame.getContentPane().setFont(new Font("Dialog", Font.PLAIN, 15));
@@ -100,15 +99,15 @@ public class WindowBase {
 		headerlabel.setBounds(10, 71, 675, 32);
 		frame.getContentPane().add(headerlabel);
 		
-		btnLogout = new JButton("Logout");
+		btnLogout = new Button("Logout");
 		btnLogout.addActionListener(logoutClicked());
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnLogout.setFocusPainted(false);
-		btnLogout.setBackground(new Color(59, 89, 182));
+		btnLogout.setBackground(borderColor);
 		btnLogout.setBounds(575, 42, 98, 32);
 		frame.getContentPane().add(btnLogout);
-		
+			
 	}
 	
 	public String getHeaderlabel() {
@@ -191,5 +190,4 @@ public class WindowBase {
 			}
 		};
 	}
-	
 }

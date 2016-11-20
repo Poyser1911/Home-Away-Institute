@@ -92,10 +92,10 @@ public class MainWindow extends WindowBase {
 		passlabel.setBounds(174, 204, 326, 32);
 		frame.getContentPane().add(passlabel);
 
-		login = new JButton("Login");
+		login = new Button("Login");
 		login.setToolTipText("Click to Login!");
 		login.addActionListener(loginClicked());
-		login.setBackground(new Color(59, 89, 182));
+		login.setBackground(borderColor);
 		login.setForeground(Color.WHITE);
 		login.setFocusPainted(false);
 		login.setFont(new Font("Tahoma", Font.BOLD, 12));

@@ -149,9 +149,9 @@ public class AdminWindow extends WindowBase{
 		table.setBackground(Color.white);
 	
 		
-		addStaff = new JButton("Add");
+		addStaff = new Button("Add");
 		addStaff.addActionListener(addStaffClicked());
-		addStaff.setBackground(new Color(59, 89, 182));
+		addStaff.setBackground(borderColor);
 		addStaff.setForeground(Color.WHITE);
 		addStaff.setFocusPainted(false);
 		addStaff.setFont(new Font("Tahoma", Font.BOLD, 12));

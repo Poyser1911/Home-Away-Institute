@@ -23,7 +23,6 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JPopupMenu;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -56,7 +55,7 @@ public class StaffWindow extends WindowBase {
     private JComboBox<String> programcodebox;
     
     //Add Progrmme
-    private JButton addProgramme;
+    private Button addProgramme;
     private JComboBox<String> programmetypebox;
     private JLabel program_name;
     private JList<String> addcourselist;
@@ -144,12 +143,12 @@ public class StaffWindow extends WindowBase {
         namebox.setBounds(204, 18, 311, 30);
         panel.add(namebox);
 
-        JButton addButton = new JButton("Add");
+        Button addButton = new Button("Add");
         addButton.addActionListener(addStudentClicked());
         addButton.setForeground(Color.WHITE);
         addButton.setFont(new Font("Tahoma", Font.BOLD, 12));
         addButton.setFocusPainted(false);
-        addButton.setBackground(new Color(59, 89, 182));
+        addButton.setBackground(borderColor);
         addButton.setBounds(199, 308, 262, 37);
         panel.add(addButton);
 
@@ -230,12 +229,12 @@ public class StaffWindow extends WindowBase {
         cp_codebox.setBounds(193, 18, 311, 30);
         panel_4.add(cp_codebox);
 
-        addProgramme = new JButton("Add");
+        addProgramme = new Button("Add");
         addProgramme.addActionListener(addProgramme());
         addProgramme.setForeground(Color.WHITE);
         addProgramme.setFont(new Font("Tahoma", Font.BOLD, 12));
         addProgramme.setFocusPainted(false);
-        addProgramme.setBackground(new Color(59, 89, 182));
+        addProgramme.setBackground(borderColor);
         addProgramme.setBounds(188, 308, 262, 37);
         panel_4.add(addProgramme);
 
@@ -270,15 +269,15 @@ public class StaffWindow extends WindowBase {
         lblNewLabel.setBounds(0, 11, 180, 29);
         panel_2.add(lblNewLabel);
 
-        JLabel label_4 = new JLabel("");
+        JLabel label_4 = new JLabel();
         label_4.setOpaque(true);
-        label_4.setBackground(new Color(59, 89, 182));
+        label_4.setBackground(borderColor);
         label_4.setBounds(180, 40, 14, 213);
         panel_2.add(label_4);
 
-        JLabel label_5 = new JLabel("");
+        JLabel label_5 = new JLabel();
         label_5.setOpaque(true);
-        label_5.setBackground(new Color(59, 89, 182));
+        label_5.setBackground(borderColor);
         label_5.setBounds(0, 3, 665, 37);
         panel_2.add(label_5);
 
@@ -289,9 +288,9 @@ public class StaffWindow extends WindowBase {
         lblSelectProgramme.setBounds(243, 262, 180, 31);
         panel_2.add(lblSelectProgramme);
 
-        JLabel label_6 = new JLabel("");
+        JLabel label_6 = new JLabel();
         label_6.setOpaque(true);
-        label_6.setBackground(new Color(59, 89, 182));
+        label_6.setBackground(borderColor);
         label_6.setBounds(0, 250, 665, 43);
         panel_2.add(label_6);
 
@@ -317,21 +316,21 @@ public class StaffWindow extends WindowBase {
         coursestable.setComponentPopupMenu(popupMenu);
         coursestable.addMouseListener(removeCourse());
 
-        JButton next_programme = new JButton(">>");
+        Button next_programme = new Button("\uE318");
         next_programme.addActionListener(nextProgramme());
         next_programme.setForeground(Color.WHITE);
         next_programme.setFont(new Font("Tahoma", Font.BOLD, 12));
         next_programme.setFocusPainted(false);
-        next_programme.setBackground(new Color(59, 89, 182));
+        next_programme.setBackground(borderColor);
         next_programme.setBounds(497, 299, 158, 37);
         panel_2.add(next_programme);
         next_programme.doClick();
-        JButton button_2 = new JButton("<<");
+        Button button_2 = new Button("<<");
         button_2.addActionListener(prevProgramme());
         button_2.setForeground(Color.WHITE);
         button_2.setFont(new Font("Tahoma", Font.BOLD, 12));
         button_2.setFocusPainted(false);
-        button_2.setBackground(new Color(59, 89, 182));
+        button_2.setBackground(borderColor);
         button_2.setBounds(20, 299, 158, 37);
         panel_2.add(button_2);
         button_2.doClick();
@@ -460,7 +459,6 @@ public class StaffWindow extends WindowBase {
                 sm.addProgramme(new Programme(cp_codebox.getText(), cp_namebox.getText(), maxCources,
                     cp_awarbox.getText(), cp_accbox.getText()));
                 sm.Load();
-                //coursestable.setModel(sm.getStore().buildProgrameTable());
                 programcodebox.setModel(getProgramCodes());
             }
         };

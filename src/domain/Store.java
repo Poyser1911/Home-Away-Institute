@@ -180,8 +180,7 @@ public class Store {
 		String[] columns = new String[] { "Code", "Name", "PreRequisite", "Credits", "Description" };
 		int found = 0;
 		int rowsNum = getNumCoursesFound(p);
-		//if(rowsNum == 0)
-			//return new DefaultTableModel();
+		
 		Object[][] rows = new Object[rowsNum][columns.length];
 		for (int i = 0; i < Courses.size(); i++) {
 			if (p.getCourseCodes().contains(Courses.get(i).getCode())){
@@ -232,7 +231,7 @@ public class Store {
 		else
 			courseCodes = s.getEnrolledCourseCodes();
 		
-		int rowsNum = s.getCourseCodes().size();
+		int rowsNum = courseCodes.size();
 		Object[][] rows = new Object[rowsNum][columns.length];
 		double cc = 0.0;
 		for (int i = 0; i < Courses.size(); i++) {

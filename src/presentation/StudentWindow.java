@@ -21,10 +21,8 @@ import domain.SaveFileManager;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.TextArea;
 
 
 public class StudentWindow extends WindowBase{
@@ -36,7 +34,7 @@ public class StudentWindow extends WindowBase{
 	JLabel lblTotalCredits;
 	JLabel lblTotalCost;
 	JLabel lblNoOfCourses;
-	JButton btnEnroll;
+	Button btnEnroll;
 	
 	private SaveFileManager sm;
 	private Student student;
@@ -150,21 +148,21 @@ public class StudentWindow extends WindowBase{
 		
 		panel.add(courselist);
 		
-		JLabel label_4 = new JLabel("");
+		JLabel label_4 = new JLabel();
 		label_4.setOpaque(true);
-		label_4.setBackground(new Color(59, 89, 182));
+		label_4.setBackground(borderColor);
 		label_4.setBounds(0, 0, 670, 37);
 		panel.add(label_4);
 		
-		JLabel label_5 = new JLabel("");
+		JLabel label_5 = new JLabel();
 		label_5.setOpaque(true);
-		label_5.setBackground(new Color(59, 89, 182));
+		label_5.setBackground(borderColor);
 		label_5.setBounds(1, 225, 670, 26);
 		panel.add(label_5);
 		
-		JLabel label_6 = new JLabel("");
+		JLabel label_6 = new JLabel();
 		label_6.setOpaque(true);
-		label_6.setBackground(new Color(59, 89, 182));
+		label_6.setBackground(borderColor);
 		label_6.setBounds(180, 37, 14, 188);
 		panel.add(label_6);
 		JScrollPane scrollPane = new JScrollPane();
@@ -263,10 +261,10 @@ public class StudentWindow extends WindowBase{
 	}
 	
 	private void getEnrolled(){
-		btnEnroll = new JButton("Enroll");
+		btnEnroll = new Button("Enroll");
 		if(student.getEnrollmentStatus() == 0){
 			btnEnroll.setText("Enroll");
-			btnEnroll.setBackground(new Color(59, 89, 182));
+			btnEnroll.setBackground(borderColor);
 		}
 		else{
 			btnEnroll.setText("Enrolled");
