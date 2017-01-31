@@ -16,6 +16,6 @@ Preview Image -
 
 
 Sample Logins
-    -Admin User: 1337 Password: 1337__
-    -Student User: 2016NET10 Password: studentpass__ 
-    -Staff User: STA123 Password: staffpass__
+    -Admin User: 1337 Password: 1337 <br />
+    -Student User: 2016NET10 Password: studentpass <br />
+    -Staff User: STA123 Password: staffpass <br />
