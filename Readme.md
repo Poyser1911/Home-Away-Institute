@@ -12,3 +12,10 @@
 
 Preview Image -
 ![Alt text](/preview.png?raw=true "Preview")
+
+
+
+Sample Logins
+    -Admin User: 1337 Password: 1337 
+    -Student User: 2016NET10 Password: studentpass 
+    -Staff User: STA123 Password: staffpass
